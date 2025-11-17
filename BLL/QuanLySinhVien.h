@@ -16,6 +16,9 @@ public:
         string tenLop;
         cout << "Nhap ten lop: ";
         getline(cin, tenLop);
+        for (auto &x : tenLop){
+            x = toupper(x);
+        }
 
         Lop* lop = timLop(tenLop);
         if (!lop) {
@@ -36,7 +39,7 @@ public:
         SinhVien sv(ho, ten, gt, ns, dc, makhoa, namhoc);
         lop->addSinhVien(sv);
 
-        cout << "\n✅ Da them sinh vien vao lop " << tenLop << endl;
+        cout << "\nDa them sinh vien vao lop " << tenLop << endl;
         system("pause");
     }
 
@@ -50,7 +53,7 @@ public:
 
         auto lop = DataAccess::docFileLop(fileName);
         danhSachLop.push_back(lop);
-        cout << "\n✅ Da them du lieu tu file!\n";
+        cout << "\n Da them du lieu tu file!\n";
         system("pause");
     }
 
@@ -60,7 +63,7 @@ public:
         Lop* lop = chonLop();
         if (!lop) return;
         lop->sapXepTheoTen();
-        cout << "✅ Da sap xep!\n";
+        cout << "Da sap xep!\n";
         system("pause");
     }
 
@@ -82,7 +85,7 @@ public:
         if (!ns.empty()) sv->Set_NgaySinh(ns);
         if (!dc.empty()) sv->Set_DiaChi(dc);
 
-        cout << "✅ Da cap nhat!\n";
+        cout << "Da cap nhat!\n";
         system("pause");
     }
 
@@ -92,7 +95,7 @@ public:
         int count = 0;
         for (auto& lop : danhSachLop)
             lop.capMSSV(count);
-        cout << "✅ Da cap MSSV!\n";
+        cout << " Da cap MSSV!\n";
         system("pause");
     }
 
@@ -101,7 +104,7 @@ public:
         system("cls");
         for (auto& lop : danhSachLop)
             lop.capEmail();
-        cout << "✅ Da cap email!\n";
+        cout << " Da cap email!\n";
         system("pause");
     }
 
@@ -131,7 +134,7 @@ public:
         getline(cin, mssv);
         for (auto& lop : danhSachLop)
             if (lop.xoaSinhVienTheoMSSV(mssv)) {
-                cout << "✅ Da xoa!\n";
+                cout << " Da xoa!\n";
                 system("pause");
                 return;
             }
@@ -166,7 +169,7 @@ public:
         cout << "Nhap ten file xuat: ";
         getline(cin, file);
         DataAccess::ghiFileLop(file, *lop);
-        cout << "✅ Da xuat file!\n";
+        cout << " Da xuat file!\n";
         system("pause");
     }
 
